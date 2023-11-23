@@ -18,8 +18,18 @@ function divide(num1, num2) {
     return num2 / num1;
 }
 
-// testing
-console.log(add(5, 6))
-console.log(subtract(5, 6))
-console.log(multiply(5, 6))
-console.log(divide(5, 6))
+function operate(num1, operator, num2) {
+    if (operator === "+") {
+        return add(num1, num2);
+    } else if (operator === "-") {
+        return subtract(num1, num2);
+    } else if (operator === "*") {
+        return multiply(num1, num2);
+    } else if (operator === "/") {
+        return divide(num1, num2);
+    } else {
+        console.log('calculaton is not valid. enter a valid calculation')
+    }
+}
+
+console.log(operate(5, "*", 6));
