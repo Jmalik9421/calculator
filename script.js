@@ -25,7 +25,7 @@ function add(num1, num2) {
 }
 
 function subtract(num1, num2) {
-    return num2 - num1;
+    return num1 - num2;
 }
 
 function multiply(num1, num2) {
@@ -33,7 +33,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num2 / num1;
+    return num1 / num2;
 }
 
 function operate(num1, operator, num2) {
@@ -50,32 +50,98 @@ function operate(num1, operator, num2) {
     }
 }
 
+
+
 function calculate() {
     let calculationSpans = document.getElementsByClassName('calculation');
     let calculationArray = [];
-
     for (let i = 0; i < calculationSpans.length; i++) {
         calculationArray.push(calculationSpans[i].textContent)
     }
-    
-    console.log(calculationArray);
+
+    if (calculationArray.includes('+')) {
+        let operatorIndex = calculationArray.indexOf('+');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
+        }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        console.log(add(num1, num2));
+    } else if (calculationArray.includes('-')) {
+        let operatorIndex = calculationArray.indexOf('-');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
+        }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        console.log(subtract(num1, num2));
+    } else if (calculationArray.includes('*')) {
+        let operatorIndex = calculationArray.indexOf('*');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
+        }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        console.log(multiply(num1, num2));
+    } else if (calculationArray.includes('/')) {
+        let operatorIndex = calculationArray.indexOf('/');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
+        }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        console.log(divide(num1, num2));
+    }
 
     // I AM HERE
     // I HAVE CREATED THIS CALCULATE() FUNCTION TO:
-    // 1. CREATE AN ARRAY WHERE EVERY ELEMENT IS A DIGIT OF THE CALCULATION
-    // 2. FIND THE INDEX OF THE OPERATOR 
-    // 3. NUM1 WILL BE DEFINED AS ALL THE ELEMENTS BEFORE THE OPERATOR. THIS CAN BE DONE BY CONCATENATING ALL THE ELEMENTS AND THEN CONVERTING THEM TO A NUMBER
-    // 4. NUM2 WILL BE DEFINED AS ALL THE ELEMENTS AFTER THE OPERATOR. THIS CAN BE DONE BY CONCATENATING ALL THE ELEMENTS AND THEN CONVERTING THEM TO A NUMBER.
-    // 5. SET UP CONDITIONAL LOGIC TO PERFORM ONE OF THE VARIOUS OPERATION FUNCTIONS (ADD, SUBTRACT, MULTIPLE, DIVIDE) DEPENDING ON THE OPERATOR SPECIFIED
+    // DONE 1. CREATE AN ARRAY WHERE EVERY ELEMENT IS A DIGIT OF THE CALCULATION
+    // DONE 2. FIND THE INDEX OF THE OPERATOR 
+    // DONE 3. NUM1 WILL BE DEFINED AS ALL THE ELEMENTS BEFORE THE OPERATOR. THIS CAN BE DONE BY CONCATENATING ALL THE ELEMENTS AND THEN CONVERTING THEM TO A NUMBER
+    // DONE 4. NUM2 WILL BE DEFINED AS ALL THE ELEMENTS AFTER THE OPERATOR. THIS CAN BE DONE BY CONCATENATING ALL THE ELEMENTS AND THEN CONVERTING THEM TO A NUMBER.
+    // DONE 5. SET UP CONDITIONAL LOGIC TO PERFORM ONE OF THE VARIOUS OPERATION FUNCTIONS (ADD, SUBTRACT, MULTIPLE, DIVIDE) DEPENDING ON THE OPERATOR SPECIFIED
     // 6. CLEAR THE DISPLAY AND THEN ONLY SHOW THE RESULT
     // 
     // PROJECT CAN BE EXPANDED TO INCLUDE FLOATS, NOT JUST INTS
 }
 
-console.log(operate(5, "*", 6));
-
-
 // IN JS, CREATE A FUNCTION TO DEFINE NUM1 AND NUM2
 // DEFINITION WILL BE DEPENDENT ON WHAT NUMBERS ARE PRESSED 
 // IN HTML RUN THE FUNCTION WHEN THE BUTTONS ARE CLICKED 
-// IN THE FUNCTION, DEFINE THE NUMBER AS STRINGS SO IT IS EASIER TO CONCATENATE, THEN CONVERT TO NUMBER
+// IN THE FUNCTION, DEFINE THE NUMBER AS STRINGS SO IT IS EASIER TO CONCATENATE, THEN CONVERT TO NUMBER///
