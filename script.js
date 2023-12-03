@@ -20,20 +20,39 @@ function defineOp(btn) {
     display.appendChild(opSpanElement)
 }
 
+function clearDisplay() {
+    let displayChildNodes = Array.from(document.getElementById('display').childNodes);
+    for (let i = 0; i < displayChildNodes.length; i++) {
+        displayChildNodes[i].remove();
+    }
+}
+
 function add(num1, num2) {
-    return num1 + num2;
+    const result = num1 + num2;
+    let resultSpanElement = document.createElement('span');
+    resultSpanElement.textContent = result;
+    display.appendChild(resultSpanElement); 
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    const result = num1 - num2;
+    let resultSpanElement = document.createElement('span');
+    resultSpanElement.textContent = result;
+    display.appendChild(resultSpanElement);
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    const result = num1 * num2;
+    let resultSpanElement = document.createElement('span');
+    resultSpanElement.textContent = result;
+    display.appendChild(resultSpanElement);
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    const result = num1 / num2;
+    let resultSpanElement = document.createElement('span');
+    resultSpanElement.textContent = result;
+    display.appendChild(resultSpanElement);
 }
 
 function operate(num1, operator, num2) {
@@ -75,7 +94,8 @@ function calculate() {
         }
         num2 = Number(num2);
 
-        console.log(add(num1, num2));
+        clearDisplay();
+        add(num1, num2);
     } else if (calculationArray.includes('-')) {
         let operatorIndex = calculationArray.indexOf('-');
         let num1 = '';
@@ -92,7 +112,8 @@ function calculate() {
         }
         num2 = Number(num2);
 
-        console.log(subtract(num1, num2));
+        clearDisplay();
+        subtract(num1, num2);
     } else if (calculationArray.includes('*')) {
         let operatorIndex = calculationArray.indexOf('*');
         let num1 = '';
@@ -109,7 +130,8 @@ function calculate() {
         }
         num2 = Number(num2);
 
-        console.log(multiply(num1, num2));
+        clearDisplay();
+        multiply(num1, num2);
     } else if (calculationArray.includes('/')) {
         let operatorIndex = calculationArray.indexOf('/');
         let num1 = '';
@@ -126,7 +148,8 @@ function calculate() {
         }
         num2 = Number(num2);
 
-        console.log(divide(num1, num2));
+        clearDisplay();
+        divide(num1, num2);
     }
 
     // I AM HERE
