@@ -51,62 +51,87 @@ function divide(num1, num2) {
     display.appendChild(resultSpanElement);
 }
 
-function getNum1(operator) {
-    let num1 = '';
-    for (let i = 0; i < operatorIndex; i++) {
-        iString = calculationArray[i].toString();
-        num1 += iString; 
-    }
-    num1 = Number(num1);
-    return num1;
-}
-
-function getNum2(operator) {
-    let num2 = '';
-    for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
-        iString = calculationArray[i].toString();
-        num2 += iString;
-    }
-    num2 = Number(num2);
-    return num2; 
-}
-
 function calculate() {
-    let num1;
-    let num2;
     let calculationSpans = document.getElementsByClassName('calculation');
     let calculationArray = [];
     for (let i = 0; i < calculationSpans.length; i++) {
         calculationArray.push(calculationSpans[i].textContent)
     }
 
-    let operators = ['+', '-', '*', '/'];
-    for (let i = 0; i < operators.length; i++) {
-        if (calculationArray.includes(operators[i])) {
-            let operatorIndex = calculationArray.indexOf(operators[i]);
-            num1 = Number(calculationArray.slice(0, operatorIndex).join(""));
-            num2 = Number(calculationArray.slice(operatorIndex + 1).join(""));
-
-            clearDisplay();
-
-            switch (calculationArray[operatorIndex]) {
-                case '+':
-                    add(num1, num2);
-                    break;
-                case '-':
-                    subtract(num1, num2);
-                    break;
-                case '*':
-                    multiply(num1, num2);
-                    break;
-                case '/':
-                    divide(num1, num2);
-                    break;
-                default:
-                    alert('Invalid operator');
-            }
+    if (calculationArray.includes('+')) {
+        let operatorIndex = calculationArray.indexOf('+');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
         }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        clearDisplay();
+        add(num1, num2);
+    } else if (calculationArray.includes('-')) {
+        let operatorIndex = calculationArray.indexOf('-');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
+        }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        clearDisplay();
+        subtract(num1, num2);
+    } else if (calculationArray.includes('*')) {
+        let operatorIndex = calculationArray.indexOf('*');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
+        }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        clearDisplay();
+        multiply(num1, num2);
+    } else if (calculationArray.includes('/')) {
+        let operatorIndex = calculationArray.indexOf('/');
+        let num1 = '';
+        for (let i = 0; i < operatorIndex; i++) {
+            iString = calculationArray[i].toString();
+            num1 += iString; 
+        }
+        num1 = Number(num1);
+
+        let num2 = '';
+        for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
+            iString = calculationArray[i].toString();
+            num2 += iString;
+        }
+        num2 = Number(num2);
+
+        clearDisplay();
+        divide(num1, num2);
     }
+
     // I AM HERE
     // I HAVE CREATED THIS CALCULATE() FUNCTION TO:
     // DONE 1. CREATE AN ARRAY WHERE EVERY ELEMENT IS A DIGIT OF THE CALCULATION
