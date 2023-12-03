@@ -1,6 +1,6 @@
 const display = document.getElementById('display');
 
-function defineNum(btn) {
+function getNumber(btn) {
     const numBtnValue = btn.textContent;
     let numSpanElement = document.createElement('span');
     numSpanElement.textContent = numBtnValue;
@@ -8,7 +8,7 @@ function defineNum(btn) {
     display.appendChild(numSpanElement);
 }
 
-function defineOp(btn) {
+function getOperator(btn) {
     const opBtnValue = btn.textContent;
     let opSpanElement = document.createElement('span');
     opSpanElement.textContent = opBtnValue;
@@ -51,26 +51,6 @@ function divide(num1, num2) {
     display.appendChild(resultSpanElement);
 }
 
-function getNum1(operator) {
-    let num1 = '';
-    for (let i = 0; i < operatorIndex; i++) {
-        iString = calculationArray[i].toString();
-        num1 += iString; 
-    }
-    num1 = Number(num1);
-    return num1;
-}
-
-function getNum2(operator) {
-    let num2 = '';
-    for (let i = operatorIndex + 1; i < calculationArray.length; i++) {
-        iString = calculationArray[i].toString();
-        num2 += iString;
-    }
-    num2 = Number(num2);
-    return num2; 
-}
-
 function calculate() {
     let num1;
     let num2;
@@ -79,6 +59,7 @@ function calculate() {
     for (let i = 0; i < calculationSpans.length; i++) {
         calculationArray.push(calculationSpans[i].textContent)
     }
+    // unable to declare calculationSpans and calculationArray globally as must be calculated upon click of '=' button which triggers 'calculate()' function
 
     let operators = ['+', '-', '*', '/'];
     for (let i = 0; i < operators.length; i++) {
